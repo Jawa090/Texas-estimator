@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Card } from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
-import { 
+import { Card } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import {
   MapPin,
   Phone,
   Mail,
   Clock,
   Upload,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
+  TrendingUp,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 
 export const Contact: React.FC = () => {
@@ -25,6 +28,11 @@ export const Contact: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  const toggleFaq = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
 
   const projectTypes = [
     'Construction Takeoff',
@@ -37,11 +45,25 @@ export const Contact: React.FC = () => {
     'Other'
   ];
 
-  const ukCities = [
-    'London', 'Manchester', 'Birmingham', 'Leeds', 'Liverpool',
-    'Glasgow', 'Edinburgh', 'Cardiff', 'Bristol', 'Newcastle',
-    'Nottingham', 'Cambridge', 'Oxford', 'Southampton', 'Leicester',
+  const texasCities = [
+    'Houston', 'San Antonio', 'Dallas', 'Austin', 'Fort Worth',
+    'El Paso', 'Arlington', 'Corpus Christi', 'Plano', 'Lubbock',
     'Other'
+  ];
+
+  const faqs = [
+    {
+      question: 'What projects do you estimate?',
+      answer: 'Residential, commercial, renovations, and infrastructure in Texas.'
+    },
+    {
+      question: 'How accurate are your estimates?',
+      answer: 'Up to 99% success rate with 2D/3D clash detection.'
+    },
+    {
+      question: 'Turnaround time?',
+      answer: '24-48 hours for most bids.'
+    }
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -62,7 +84,7 @@ export const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -87,22 +109,52 @@ export const Contact: React.FC = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-texas-navy text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-texas-navy text-white py-24">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: 'url("/images/contact-hero.png")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        >
+          <div className="absolute inset-0 bg-texas-navy/90" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Get Your Free Quote
+              Contact Us Construction Estimating Texas
             </h1>
-            <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Ready to get started? Send us your project details and receive a detailed quote within 2 hours. 
-              No obligation, completely free.
+            <p className="text-xl text-gray-200 max-w-4xl mx-auto leading-relaxed">
+              Ready to get accurate construction estimates for your Texas project?
+              ConstructionEstimatingTexas provides professional estimating services to help contractors
+              win bids and manage costs effectively.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Contact Us */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-texas-navy mb-6">Why Contact ConstructionEstimatingTexas?</h2>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              Our team delivers precise takeoffs, cost breakdowns, and bid-winning estimates using the latest software
+              for residential, commercial, and industrial projects across Texas. Expect fast turnaround times,
+              98% bid-win rates, and detailed reports covering materials, labor, and overhead to boost your profitability.
+            </p>
+            <p className="text-lg text-texas-accent font-medium">
+              Whether you're a busy contractor or subcontractor, we handle complex estimates so you focus on building.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Form & Info */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
@@ -191,7 +243,7 @@ export const Contact: React.FC = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-texas-accent focus:border-transparent"
-                        placeholder="+44 123 456 7890"
+                        placeholder="(555) 123-4567"
                       />
                     </div>
                   </div>
@@ -228,7 +280,7 @@ export const Contact: React.FC = () => {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-texas-accent focus:border-transparent"
                       >
                         <option value="">Select location</option>
-                        {ukCities.map(city => (
+                        {texasCities.map(city => (
                           <option key={city} value={city}>{city}</option>
                         ))}
                       </select>
@@ -299,8 +351,43 @@ export const Contact: React.FC = () => {
               </Card>
             </div>
 
-            {/* Contact Information */}
+            {/* Steps & Info */}
             <div className="space-y-8">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold text-texas-navy mb-2">
+                  Get a Free Quote Today!
+                </h3>
+                <p className="text-sm text-gray-600 mb-4">
+                  Starting is simple and tailored to your needs.
+                </p>
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      1
+                    </div>
+                    <p className="text-gray-700 text-sm mt-1">
+                      Upload plans or email project details for a custom quote within hours.
+                    </p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      2
+                    </div>
+                    <p className="text-gray-700 text-sm mt-1">
+                      Specify scope, timeline, and location for Texas-specific pricing.
+                    </p>
+                  </div>
+                  <div className="flex items-start space-x-3">
+                    <div className="w-8 h-8 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                      3
+                    </div>
+                    <p className="text-gray-700 text-sm mt-1">
+                      Receive detailed estimates including soft/hard costs and price fluctuations.
+                    </p>
+                  </div>
+                </div>
+              </Card>
+
               <Card className="p-6">
                 <h3 className="text-xl font-bold text-texas-navy mb-4">
                   Contact Information
@@ -310,15 +397,15 @@ export const Contact: React.FC = () => {
                     <MapPin className="w-5 h-5 text-texas-accent mt-1" />
                     <div>
                       <p className="font-medium text-texas-navy">Address</p>
-                      <p className="text-gray-600">123 Business Park<br />London, UK SW1A 1AA</p>
+                      <p className="text-gray-600">Houston, Texas</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-texas-accent" />
                     <div>
                       <p className="font-medium text-texas-navy">Phone</p>
-                      <a href="tel:+441234567890" className="text-gray-600 hover:text-texas-accent">
-                        +44 123 456 7890
+                      <a href="tel:7187196171" className="text-gray-600 hover:text-texas-accent">
+                        (718) 719-6171
                       </a>
                     </div>
                   </div>
@@ -326,8 +413,8 @@ export const Contact: React.FC = () => {
                     <Mail className="w-5 h-5 text-texas-accent" />
                     <div>
                       <p className="font-medium text-texas-navy">Email</p>
-                      <a href="mailto:info@texasestimators.co.uk" className="text-gray-600 hover:text-texas-accent">
-                        info@texasestimators.co.uk
+                      <a href="mailto:info@constructionestimatingtexas.com" className="text-gray-600 hover:text-texas-accent">
+                        info@constructionestimatingtexas.com
                       </a>
                     </div>
                   </div>
@@ -344,53 +431,41 @@ export const Contact: React.FC = () => {
                   </div>
                 </div>
               </Card>
-
-              <Card className="p-6">
-                <h3 className="text-xl font-bold text-texas-navy mb-4">
-                  What Happens Next?
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      1
-                    </div>
-                    <p className="text-gray-600">We review your project details within 2 hours</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      2
-                    </div>
-                    <p className="text-gray-600">You receive a detailed quote with scope and timeline</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      3
-                    </div>
-                    <p className="text-gray-600">Upon approval, we begin your estimate immediately</p>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="w-6 h-6 bg-texas-accent text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      4
-                    </div>
-                    <p className="text-gray-600">Receive your professional estimate in 24-48 hours</p>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 bg-gray-50">
-                <h3 className="text-lg font-bold text-texas-navy mb-3">
-                  Need Immediate Help?
-                </h3>
-                <p className="text-gray-600 mb-4 text-sm">
-                  For urgent projects or questions, call us directly during business hours.
-                </p>
-                <a href="tel:+441234567890">
-                  <Button variant="secondary" className="w-full">
-                    Call Now: +44 123 456 7890
-                  </Button>
-                </a>
-              </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-texas-navy mb-4">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  className="w-full px-6 py-4 flex items-center justify-between text-left bg-white hover:bg-gray-50 transition-colors"
+                  onClick={() => toggleFaq(index)}
+                >
+                  <span className="font-semibold text-texas-navy">{faq.question}</span>
+                  {openFaqIndex === index ? (
+                    <ChevronUp className="w-5 h-5 text-texas-accent" />
+                  ) : (
+                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                  )}
+                </button>
+                {openFaqIndex === index && (
+                  <div className="px-6 py-4 bg-gray-50 text-gray-600 leading-relaxed border-t border-gray-200">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
