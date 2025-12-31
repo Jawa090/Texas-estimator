@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { SEO } from '../components/SEO';
+import { usePageSEO } from '../hooks/usePageSEO';
+import { SEOHead } from '../components/SEOHead';
+
+
+
 import { Hero } from '../components/sections/Hero';
 import { FeatureList } from '../components/sections/FeatureList';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
 import {
   Clock,
   FileText,
@@ -195,37 +199,17 @@ export const Home: React.FC = () => {
   ];
 
 
-  const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Construction Estimating Texas",
-    "url": "https://constructionestimatingtexas.com",
-    "logo": "https://constructionestimatingtexas.com/images/logo.png",
-    "description": "Professional construction estimating and takeoff services for Texas contractors",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Business Park",
-      "addressLocality": "Texas",
-      "postalCode": "75001",
-      "addressCountry": "US"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+1-555-123-4567",
-      "contactType": "customer service",
-      "email": "info@constructionestimatingtexas.com"
-    }
-  };
+  // Fetch Dynamic SEO
+  const { seoData } = usePageSEO('home');
+
+
 
   return (
     <div className="min-h-screen">
-      <SEO
-        title="Texas Construction Estimating Services | Accurate Estimates"
-        description="In search of the best Texas construction estimating services? At Texas Estimators, we give you precise cost estimates, quantity takeoffs, and bidding support."
-        keywords="Texas construction estimating services, construction cost estimates, quantity takeoffs, bidding support, construction estimators Texas"
-        canonical="/"
-        structuredData={organizationSchema}
+      <SEOHead
+        data={seoData}
       />
+
 
       {/* Hero Section */}
       <Hero

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ChevronDown, Clock } from 'lucide-react';
-import { Button } from '../ui/button';
-import { services } from '../../data/services';
+import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Button } from '../ui/Button';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+
   const location = useLocation();
 
   // Countdown timer state
@@ -34,15 +33,7 @@ export const Navbar: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const navigation = [
-    { name: 'Home', href: '/' },
-    // { name: 'Our Process', href: '/process' },
-    // { name: 'Locations', href: '/locations' },
-    // { name: 'Trades', href: '/trades' },
-    { name: 'Pricing', href: '/pricing' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' }
-  ];
+
 
   const isActive = (path: string) => location.pathname === path;
 

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
 import {
   MapPin,
   Phone,
@@ -9,12 +9,15 @@ import {
   Upload,
   CheckCircle,
   AlertCircle,
-  TrendingUp,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
+import { usePageSEO } from '../hooks/usePageSEO';
+import { SEOHead } from '../components/SEOHead';
 
 export const Contact: React.FC = () => {
+  const { seoData } = usePageSEO('contact');
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -108,6 +111,10 @@ export const Contact: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        data={seoData}
+      />
+
       {/* Header */}
       <section className="relative bg-texas-navy text-white py-24">
         {/* Background Image */}

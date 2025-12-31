@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
 import {
   Users,
   CheckCircle,
@@ -13,8 +13,15 @@ import {
   Clock
 } from 'lucide-react';
 
+import { usePageSEO } from '../hooks/usePageSEO';
+import { SEOHead } from '../components/SEOHead';
+
 export const About: React.FC = () => {
+  const { seoData } = usePageSEO('about');
+
   const services = [
+    // ... existing services ...
+
     {
       title: 'Material & Quantity Takeoffs',
       description: 'Accurate and detailed material lists to help you order exactly what you need.',
@@ -67,6 +74,9 @@ export const About: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        data={seoData}
+      />
       {/* Header */}
       <section className="relative bg-texas-navy text-white py-24">
         {/* Background Image */}

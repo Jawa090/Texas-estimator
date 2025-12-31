@@ -1,11 +1,4 @@
-import {
-  Calculator,
-  Building2,
-  Home,
-  Factory,
-  Zap,
-  Lightbulb
-} from 'lucide-react';
+
 
 export const serviceCategories = [
   'Residential Estimating',

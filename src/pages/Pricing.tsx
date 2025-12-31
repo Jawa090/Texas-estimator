@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Card } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Card } from '../components/ui/Card';
+import { Button } from '../components/ui/Button';
 import {
   CheckCircle,
   Star,
   Clock,
-  FileText,
   Phone,
-  Mail,
-  Calculator,
-  Shield,
-  Zap,
-  MapPin,
   Upload,
   ChevronDown,
   ChevronUp
 } from 'lucide-react';
+import { usePageSEO } from '../hooks/usePageSEO';
+import { SEOHead } from '../components/SEOHead';
 
 export const Pricing: React.FC = () => {
+  const { seoData } = usePageSEO('pricing');
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -179,6 +176,9 @@ export const Pricing: React.FC = () => {
 
   return (
     <div className="min-h-screen">
+      <SEOHead
+        data={seoData}
+      />
       {/* Hero Section */}
       <section className="relative bg-texas-navy text-white py-24">
         {/* Background Image */}

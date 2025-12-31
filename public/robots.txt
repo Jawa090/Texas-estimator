@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://texasestimators.co.uk/sitemap.xml
+Sitemap: https://constructionestimatingtexas.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
