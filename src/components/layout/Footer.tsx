@@ -12,7 +12,7 @@ export const Footer: React.FC = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <img src="/logo.svg" alt="Texas Estimators" className="h-24 md:h-40 w-auto" />
+              <img src="/logo.svg" alt="Texas Estimators" className="h-28 md:h-48 w-auto" />
             </div>
             <p className="text-gray-300 text-sm">
               Professional construction estimating and takeoff services for the UK market.
@@ -35,11 +35,11 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Services</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/services/construction-takeoff" className="text-gray-300 hover:text-texas-accent transition-colors">Construction Takeoff</Link></li>
-              <li><Link to="/services/commercial-estimating" className="text-gray-300 hover:text-texas-accent transition-colors">Commercial Estimating</Link></li>
-              <li><Link to="/services/residential-estimating" className="text-gray-300 hover:text-texas-accent transition-colors">Residential Estimating</Link></li>
-              <li><Link to="/services/mep-estimating" className="text-gray-300 hover:text-texas-accent transition-colors">MEP Estimating</Link></li>
-              <li><Link to="/services/electrical-estimating" className="text-gray-300 hover:text-texas-accent transition-colors">Electrical Estimating</Link></li>
+              <li><Link to="/services/construction-takeoff/" className="text-gray-300 hover:text-texas-accent transition-colors">Construction Takeoff</Link></li>
+              <li><Link to="/services/commercial-estimating/" className="text-gray-300 hover:text-texas-accent transition-colors">Commercial Estimating</Link></li>
+              <li><Link to="/services/residential-estimating/" className="text-gray-300 hover:text-texas-accent transition-colors">Residential Estimating</Link></li>
+              <li><Link to="/services/mep-estimating/" className="text-gray-300 hover:text-texas-accent transition-colors">MEP Estimating</Link></li>
+              <li><Link to="/services/electrical-estimating/" className="text-gray-300 hover:text-texas-accent transition-colors">Electrical Estimating</Link></li>
             </ul>
           </div>
 
@@ -47,12 +47,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about-us" className="text-gray-300 hover:text-texas-accent transition-colors">About Us</Link></li>
-              <li><Link to="/process" className="text-gray-300 hover:text-texas-accent transition-colors">Our Process</Link></li>
-              <li><Link to="/pricing" className="text-gray-300 hover:text-texas-accent transition-colors">Pricing</Link></li>
-              <li><Link to="/locations" className="text-gray-300 hover:text-texas-accent transition-colors">Locations</Link></li>
-              <li><Link to="/testimonials" className="text-gray-300 hover:text-texas-accent transition-colors">Testimonials</Link></li>
-              <li><Link to="/contact-us" className="text-gray-300 hover:text-texas-accent transition-colors">Contact</Link></li>
+              <li><Link to="/about-us/" className="text-gray-300 hover:text-texas-accent transition-colors">About Us</Link></li>
+              <li><Link to="/process/" className="text-gray-300 hover:text-texas-accent transition-colors">Our Process</Link></li>
+              <li><Link to="/pricing/" className="text-gray-300 hover:text-texas-accent transition-colors">Pricing</Link></li>
+              <li><Link to="/locations/" className="text-gray-300 hover:text-texas-accent transition-colors">Locations</Link></li>
+              <li><Link to="/testimonials/" className="text-gray-300 hover:text-texas-accent transition-colors">Testimonials</Link></li>
+              <li><Link to="/contact-us/" className="text-gray-300 hover:text-texas-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -97,13 +97,13 @@ export const Footer: React.FC = () => {
               © {currentYear} Texas Estimators. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
-              <Link to="/privacy" className="text-gray-300 hover:text-texas-accent transition-colors">
+              <Link to="/privacy/" className="text-gray-300 hover:text-texas-accent transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-gray-300 hover:text-texas-accent transition-colors">
+              <Link to="/terms/" className="text-gray-300 hover:text-texas-accent transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/cookies" className="text-gray-300 hover:text-texas-accent transition-colors">
+              <Link to="/cookies/" className="text-gray-300 hover:text-texas-accent transition-colors">
                 Cookie Policy
               </Link>
             </div>

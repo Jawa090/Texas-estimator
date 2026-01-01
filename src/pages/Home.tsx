@@ -728,12 +728,12 @@ export const Home: React.FC = () => {
               Contact us today and receive your exact value in 9-24 hours. Get the most reliable construction estimating services Texas with us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
+              <Link to="/contact-us/">
                 <Button size="lg" className="w-full sm:w-auto shadow-lg hover:shadow-orange-500/20">
                   Get Free Quote Now
                 </Button>
               </Link>
-              <Link to="/pricing">
+              <Link to="/pricing/">
                 <Button variant="secondary" size="lg" className="w-full sm:w-auto hover:bg-white/90">
                   View Pricing
                 </Button>

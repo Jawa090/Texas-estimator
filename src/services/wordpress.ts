@@ -16,6 +16,8 @@ export const WP_CONFIG = {
 export interface SEOData {
     title: string;
     description: string;
+    keywords: string;
+    robots: string;
     canonical: string;
     ogTitle: string;
     ogDescription: string;
@@ -34,6 +36,14 @@ export interface YoastHeadJson {
     title: string;
     description: string;
     canonical: string;
+    keywords?: string;
+    robots?: {
+        index: string;
+        follow: string;
+        'max-snippet': string;
+        'max-image-preview': string;
+        'max-video-preview': string;
+    };
     og_title: string;
     og_description: string;
     og_url: string;
@@ -111,26 +121,32 @@ export const cleanCanonicalUrl = (url: string = ''): string => {
     // 1. Remove "cms" subdomain (if present)
     let clean = url.replace('//cms.', '//');
 
-    // 2. Strip trailing slash
-    if (clean.endsWith('/')) {
-        clean = clean.slice(0, -1);
-    }
-
-    // 3. Handle Home Page: if URL ends in /home or the long home slug, strip it to match root
+    // 2. Handle Home Page: if URL ends in /home or the legacy home slug, strip it to match root
     if (clean.endsWith('/home')) {
         clean = clean.slice(0, -5);
     }
     if (clean.endsWith('/construction-estimating-services-texas')) {
         clean = clean.replace('/construction-estimating-services-texas', '');
     }
+    if (clean.endsWith('/home/')) {
+        clean = clean.slice(0, -6);
+    }
+
+    // 3. Ensure trailing slash (except for files)
+    const urlObjForCheck = clean.includes('://') ? new URL(clean) : null;
+    const pathname = urlObjForCheck ? urlObjForCheck.pathname : clean;
+    const hasExtension = /\.[a-z0-9]+$/i.test(pathname);
+
+    if (!clean.endsWith('/') && !hasExtension) {
+        clean += '/';
+    }
 
     // 4. Dev Mode: Use window.location.origin
     if (import.meta.env.DEV && typeof window !== 'undefined') {
         try {
             const urlObj = new URL(clean);
-            // Construct local URL, avoiding double slash if pathname is just /
-            const path = urlObj.pathname === '/' ? '' : urlObj.pathname;
-            return `${window.location.origin}${path}`;
+            // Construct local URL
+            return `${window.location.origin}${urlObj.pathname}`;
         } catch (e) {
             console.warn('Invalid URL in cleanCanonicalUrl:', clean);
         }
@@ -151,9 +167,15 @@ export const normalizeSEO = (post: WPPost): SEOData => {
     const coreTitle = post.title.rendered;
     const coreDescription = stripHtml(post.excerpt.rendered);
 
+    const robots = yoast?.robots
+        ? Object.values(yoast.robots).join(', ')
+        : 'index, follow';
+
     return {
         title: yoast?.title || coreTitle,
         description: yoast?.description || coreDescription,
+        keywords: yoast?.keywords || '',
+        robots,
         canonical: cleanCanonicalUrl(yoast?.canonical || post.link),
 
         // Open Graph
@@ -225,7 +247,7 @@ export const getContentBySlug = async (slug: string): Promise<ContentResponse | 
 
     // Normalization logic for special pages
     if (slug === '/' || slug === '' || slug === 'home') {
-        wpSlug = 'construction-estimating-services-texas';
+        wpSlug = 'home';
     } else if (slug === 'about') {
         wpSlug = 'about-us';
     } else if (slug === 'contact') {

@@ -37,11 +37,20 @@ const RedirectHandler = () => {
 
         // Let's refine targetHost to be safer: if we stripped www, we have the naked domain/host.
 
+        // 3. Enforce trailing slash
+        let targetPath = currentPath;
+        // Ignore files with extensions (e.g., .png, .xml, .js)
+        const hasExtension = /\.[a-z0-9]+$/i.test(window.location.pathname);
+        if (!window.location.pathname.endsWith('/') && !hasExtension) {
+            targetPath = window.location.pathname + '/' + window.location.search + window.location.hash;
+        }
+
         const needsProtocolRedirect = currentProtocol !== targetProtocol;
         const needsHostRedirect = currentHost !== targetHost;
+        const needsPathRedirect = currentPath !== targetPath;
 
-        if (needsProtocolRedirect || needsHostRedirect) {
-            const newUrl = `${targetProtocol}//${targetHost}${currentPath}`;
+        if (needsProtocolRedirect || needsHostRedirect || needsPathRedirect) {
+            const newUrl = `${targetProtocol}//${targetHost}${targetPath}`;
             console.log(`Redirecting from ${currentUrl} to ${newUrl}`);
             window.location.replace(newUrl);
         }

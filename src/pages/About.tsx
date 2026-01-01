@@ -126,7 +126,7 @@ export const About: React.FC = () => {
                   trade-specific results that you can trust. No more guessing games or last-minute panic.
                 </p>
                 <div className="pt-4">
-                  <Link to="/contact">
+                  <Link to="/contact-us/">
                     <Button>Get Your Estimate Today</Button>
                   </Link>
                 </div>
@@ -216,7 +216,7 @@ export const About: React.FC = () => {
             <p className="text-lg text-gray-300 mb-8">
               You can count on help, so you don't have to guess when deadlines are coming up.
             </p>
-            <Link to="/contact">
+            <Link to="/contact-us/">
               <Button size="lg" className="bg-texas-accent hover:bg-orange-600 text-white border-none">
                 Start Your Next Project
               </Button>

@@ -42,9 +42,9 @@ try {
     console.warn('Failed to read App.tsx, falling back to defaults:', e);
     REACT_ROUTES = [
         { path: '/', slug: 'home' },
-        { path: '/about-us', slug: 'about' },
-        { path: '/pricing', slug: 'pricing' },
-        { path: '/contact-us', slug: 'contact' }
+        { path: '/about-us/', slug: 'about' },
+        { path: '/pricing/', slug: 'pricing' },
+        { path: '/contact-us/', slug: 'contact' }
     ];
 }
 

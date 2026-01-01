@@ -214,7 +214,7 @@ export const Pricing: React.FC = () => {
                   Call Us: (718) 719-6171
                 </Button>
               </a>
-              <Link to="/contact">
+              <Link to="/contact-us/">
                 <Button variant="secondary" size="lg">
                   Schedule a Meeting
                 </Button>
@@ -289,7 +289,7 @@ export const Pricing: React.FC = () => {
                 </div>
 
                 <div className="p-4 mt-auto">
-                  <Link to="/contact">
+                  <Link to="/contact-us/">
                     <Button className={`w-full ${pkg.popular ? 'bg-texas-accent hover:bg-orange-600' : 'bg-texas-navy hover:bg-slate-800'}`}>
                       Get Started
                     </Button>

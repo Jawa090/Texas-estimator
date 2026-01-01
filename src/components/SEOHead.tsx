@@ -10,6 +10,8 @@ interface SEOHeadProps {
 const DEFAULT_SEO = {
     title: 'Texas Construction Estimating',
     description: 'Professional construction estimating services in Texas.',
+    keywords: 'construction estimating, quantity takeoff, cost estimation, Texas contractors, construction takeoffs, estimating services',
+    robots: 'index, follow',
     ogType: 'website',
     twitterCard: 'summary_large_image',
 };
@@ -27,6 +29,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ data, fallbackData }) => {
         return {
             title: data?.title || fallbackData?.title || DEFAULT_SEO.title,
             description: data?.description || fallbackData?.description || DEFAULT_SEO.description,
+            keywords: data?.keywords || fallbackData?.keywords || DEFAULT_SEO.keywords,
+            robots: data?.robots || fallbackData?.robots || DEFAULT_SEO.robots,
             canonical: data?.canonical || fallbackData?.canonical,
 
             // Open Graph
@@ -49,6 +53,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({ data, fallbackData }) => {
             {/* Standard Metadata */}
             <title>{seo.title}</title>
             <meta name="description" content={seo.description} />
+            {seo.keywords && <meta name="keywords" content={seo.keywords} />}
+            <meta name="robots" content={seo.robots} />
             {seo.canonical && <link rel="canonical" href={seo.canonical} />}
 
             {/* Open Graph / Facebook */}
