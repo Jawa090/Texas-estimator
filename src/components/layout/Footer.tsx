@@ -11,7 +11,9 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="text-2xl font-bold">Texas Estimators</div>
+            <div className="flex items-center space-x-2">
+              <img src="/logo.svg" alt="Texas Estimators" className="h-24 md:h-40 w-auto" />
+            </div>
             <p className="text-gray-300 text-sm">
               Professional construction estimating and takeoff services for the UK market.
               Fast, accurate, and RICS-compliant estimates.

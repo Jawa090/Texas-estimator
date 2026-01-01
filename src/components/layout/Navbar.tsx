@@ -85,12 +85,11 @@ export const Navbar: React.FC = () => {
       {/* Main Navigation */}
       <nav className="bg-white shadow-soft sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-28">
+            {/* Logo */}
             {/* Logo */}
             <Link to="/" className="flex items-center">
-              <div className="text-2xl font-bold text-texas-navy">
-                Texas Estimators
-              </div>
+              <img src="/logo.svg" alt="Texas Estimators" className="h-24 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
