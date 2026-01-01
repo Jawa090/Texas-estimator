@@ -118,8 +118,8 @@ const stripHtml = (html: string): string => {
 export const cleanCanonicalUrl = (url: string = ''): string => {
     if (!url) return '';
 
-    // 1. Remove "cms" subdomain (if present)
-    let clean = url.replace('//cms.', '//');
+    // 1. Remove "cms" or "www" subdomains
+    let clean = url.replace('//cms.', '//').replace('//www.', '//');
 
     // 2. Handle Home Page: if URL ends in /home or the legacy home slug, strip it to match root
     if (clean.endsWith('/home')) {
