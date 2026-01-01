@@ -95,6 +95,51 @@ const stripHtml = (html: string): string => {
 };
 
 /**
+ * Helper to normalize canonical URLs.
+ * Logic:
+ * 1. Remove "cms" subdomain.
+ * 2. Strip trailing slashes.
+ * 3. Handle Home Page: strip /home to root.
+ * 4. Dev Mode: use localhost origin.
+ * 
+ * @param {string} url - The raw URL.
+ * @returns {string} The cleaned canonical URL.
+ */
+export const cleanCanonicalUrl = (url: string = ''): string => {
+    if (!url) return '';
+
+    // 1. Remove "cms" subdomain (if present)
+    let clean = url.replace('//cms.', '//');
+
+    // 2. Strip trailing slash
+    if (clean.endsWith('/')) {
+        clean = clean.slice(0, -1);
+    }
+
+    // 3. Handle Home Page: if URL ends in /home or the long home slug, strip it to match root
+    if (clean.endsWith('/home')) {
+        clean = clean.slice(0, -5);
+    }
+    if (clean.endsWith('/construction-estimating-services-texas')) {
+        clean = clean.replace('/construction-estimating-services-texas', '');
+    }
+
+    // 4. Dev Mode: Use window.location.origin
+    if (import.meta.env.DEV && typeof window !== 'undefined') {
+        try {
+            const urlObj = new URL(clean);
+            // Construct local URL, avoiding double slash if pathname is just /
+            const path = urlObj.pathname === '/' ? '' : urlObj.pathname;
+            return `${window.location.origin}${path}`;
+        } catch (e) {
+            console.warn('Invalid URL in cleanCanonicalUrl:', clean);
+        }
+    }
+
+    return clean;
+};
+
+/**
  * Normalizes raw WordPress post data into a clean SEOData object.
  * Prioritizes Yoast SEO data, falling back to core WordPress fields if necessary.
  * 
@@ -109,7 +154,7 @@ export const normalizeSEO = (post: WPPost): SEOData => {
     return {
         title: yoast?.title || coreTitle,
         description: yoast?.description || coreDescription,
-        canonical: yoast?.canonical || post.link,
+        canonical: cleanCanonicalUrl(yoast?.canonical || post.link),
 
         // Open Graph
         ogTitle: yoast?.og_title || yoast?.title || coreTitle,
@@ -175,8 +220,20 @@ const fetchEntityBySlug = async (endpoint: string, slug: string): Promise<WPPost
  * @returns {Promise<ContentResponse | null>} The content including standardized SEO data.
  */
 export const getContentBySlug = async (slug: string): Promise<ContentResponse | null> => {
+    // Map internal React routes/names to actual WP slugs
+    let wpSlug = slug;
+
+    // Normalization logic for special pages
+    if (slug === '/' || slug === '' || slug === 'home') {
+        wpSlug = 'construction-estimating-services-texas';
+    } else if (slug === 'about') {
+        wpSlug = 'about-us';
+    } else if (slug === 'contact') {
+        wpSlug = 'contact-us';
+    }
+
     // 1. Try to fetch as a Page first (most common for static routes)
-    const page = await fetchEntityBySlug('/pages', slug);
+    const page = await fetchEntityBySlug('/pages', wpSlug);
     if (page) {
         return {
             post: page,
@@ -186,7 +243,7 @@ export const getContentBySlug = async (slug: string): Promise<ContentResponse | 
     }
 
     // 2. Fallback to fetch as a Post (for blog posts)
-    const post = await fetchEntityBySlug('/posts', slug);
+    const post = await fetchEntityBySlug('/posts', wpSlug);
     if (post) {
         return {
             post: post,

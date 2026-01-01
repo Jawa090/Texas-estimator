@@ -1,0 +1,20 @@
+{
+  "home": {
+    "error": "Not found"
+  },
+  "about": {
+    "error": "Not found"
+  },
+  "contact": {
+    "error": "Not found"
+  },
+  "pricing": {
+    "slug": "pricing",
+    "raw_link": "https://cms.constructionestimatingtexas.com/pricing/",
+    "title": "Pricing - Construction Estimating Texas",
+    "description": "Affordable Construction Estimating Services in Texas. Transparent pricing for residential & commercial projects with accurate estimates.",
+    "canonical": "https://constructionestimatingtexas.com/pricing",
+    "hasYoast": true,
+    "yoastCanonical": "https://cms.constructionestimatingtexas.com/pricing/"
+  }
+}

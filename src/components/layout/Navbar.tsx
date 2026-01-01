@@ -108,8 +108,8 @@ export const Navbar: React.FC = () => {
 
               {/* About Link */}
               <Link
-                to="/about"
-                className={`text-sm font-medium transition-colors duration-200 ${isActive('/about')
+                to="/about-us"
+                className={`text-sm font-medium transition-colors duration-200 ${isActive('/about-us')
                   ? 'text-texas-accent'
                   : 'text-gray-700 hover:text-texas-accent'
                   }`}
@@ -130,8 +130,8 @@ export const Navbar: React.FC = () => {
 
               {/* Contact Link */}
               <Link
-                to="/contact"
-                className={`text-sm font-medium transition-colors duration-200 ${isActive('/contact')
+                to="/contact-us"
+                className={`text-sm font-medium transition-colors duration-200 ${isActive('/contact-us')
                   ? 'text-texas-accent'
                   : 'text-gray-700 hover:text-texas-accent'
                   }`}
@@ -142,7 +142,7 @@ export const Navbar: React.FC = () => {
 
             {/* CTA Button */}
             <div className="hidden lg:flex">
-              <Link to="/contact">
+              <Link to="/contact-us">
                 <Button size="sm">Get Free Quote</Button>
               </Link>
             </div>
@@ -177,8 +177,8 @@ export const Navbar: React.FC = () => {
 
                 {/* About Link */}
                 <Link
-                  to="/about"
-                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${isActive('/about')
+                  to="/about-us"
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${isActive('/about-us')
                     ? 'text-texas-accent bg-orange-50'
                     : 'text-gray-700 hover:text-texas-accent hover:bg-gray-50'
                     }`}
@@ -201,8 +201,8 @@ export const Navbar: React.FC = () => {
 
                 {/* Contact Link */}
                 <Link
-                  to="/contact"
-                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${isActive('/contact')
+                  to="/contact-us"
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${isActive('/contact-us')
                     ? 'text-texas-accent bg-orange-50'
                     : 'text-gray-700 hover:text-texas-accent hover:bg-gray-50'
                     }`}
@@ -220,7 +220,7 @@ export const Navbar: React.FC = () => {
                     <Mail size={16} />
                     <span>info@constructionestimatingtexas.com</span>
                   </a>
-                  <Link to="/contact" onClick={() => setIsOpen(false)}>
+                  <Link to="/contact-us" onClick={() => setIsOpen(false)}>
                     <Button className="w-full mt-2">Get Free Quote</Button>
                   </Link>
                 </div>

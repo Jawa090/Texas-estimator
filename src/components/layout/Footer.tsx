@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <div className="text-2xl font-bold">Texas Estimators</div>
             <p className="text-gray-300 text-sm">
-              Professional construction estimating and takeoff services for the UK market. 
+              Professional construction estimating and takeoff services for the UK market.
               Fast, accurate, and RICS-compliant estimates.
             </p>
             <div className="flex space-x-4">
@@ -45,12 +45,12 @@ export const Footer: React.FC = () => {
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link to="/about" className="text-gray-300 hover:text-texas-accent transition-colors">About Us</Link></li>
+              <li><Link to="/about-us" className="text-gray-300 hover:text-texas-accent transition-colors">About Us</Link></li>
               <li><Link to="/process" className="text-gray-300 hover:text-texas-accent transition-colors">Our Process</Link></li>
               <li><Link to="/pricing" className="text-gray-300 hover:text-texas-accent transition-colors">Pricing</Link></li>
               <li><Link to="/locations" className="text-gray-300 hover:text-texas-accent transition-colors">Locations</Link></li>
               <li><Link to="/testimonials" className="text-gray-300 hover:text-texas-accent transition-colors">Testimonials</Link></li>
-              <li><Link to="/contact" className="text-gray-300 hover:text-texas-accent transition-colors">Contact</Link></li>
+              <li><Link to="/contact-us" className="text-gray-300 hover:text-texas-accent transition-colors">Contact</Link></li>
             </ul>
           </div>
 

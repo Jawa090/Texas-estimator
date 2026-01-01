@@ -27,7 +27,13 @@ try {
         // Exclude dynamic routes with parameters if any (e.g. /post/:id) for now unless handled
         if (!routePath.includes(':')) {
              // Derive slug from path (e.g. "/about" -> "about", "/" -> "home")
+             // Derive slug from path (e.g. "/about" -> "about", "/" -> "home")
             let slug = routePath === '/' ? 'home' : routePath.replace(/^\//, '');
+            
+            // Map new frontend routes to existing WordPress slugs
+            if (slug === 'about-us') slug = 'about';
+            if (slug === 'contact-us') slug = 'contact';
+
             REACT_ROUTES.push({ path: routePath, slug });
         }
     }
@@ -36,9 +42,9 @@ try {
     console.warn('Failed to read App.tsx, falling back to defaults:', e);
     REACT_ROUTES = [
         { path: '/', slug: 'home' },
-        { path: '/about', slug: 'about' },
+        { path: '/about-us', slug: 'about' },
         { path: '/pricing', slug: 'pricing' },
-        { path: '/contact', slug: 'contact' }
+        { path: '/contact-us', slug: 'contact' }
     ];
 }
 
