@@ -238,6 +238,11 @@ export const Home: React.FC = () => {
                 <p>
                   Work with us to get the best out of construction estimating services in Texas. Our team combines 15 years of experience with local market knowledge. We support household buildings to large commercial sites. By outsourcing estimations with us, you save time and reduce errors. Thus, you can manage the construction with better decisions. We will also help you stay in a budget and increase profits.
                 </p>
+                <Link to={"/contact-us"}>
+                  <Button size="lg" className="w-full sm:w-auto text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+                    Estimate Now
+                  </Button>
+                </Link>
               </div>
             </motion.div>
             <motion.div
@@ -293,6 +298,7 @@ export const Home: React.FC = () => {
               </motion.div>
             ))}
           </motion.div>
+
         </div>
       </section>
 
@@ -335,6 +341,11 @@ export const Home: React.FC = () => {
               </div>
             </motion.div>
           </div>
+          <Link to={"/contact-us"}>
+            <Button size="lg" className="w-full sm:w-auto text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              Estimate Now
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -411,6 +422,11 @@ export const Home: React.FC = () => {
               />
             </motion.div>
           </div>
+          <Link to={"/contact-us"}>
+            <Button size="lg" className="w-full sm:w-auto text-lg shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+              Estimate Now
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -469,6 +485,7 @@ export const Home: React.FC = () => {
             viewport={{ once: true, margin: "-50px" }}
           >
             {processSteps.map((step, index) => (
+              <Link to={"/contact-us"}>
               <motion.div key={index} variants={item} className="text-center">
                 <div className="w-16 h-16 bg-texas-accent text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-lg">
                   {step.step}
@@ -483,6 +500,7 @@ export const Home: React.FC = () => {
                   {step.description}
                 </p>
               </motion.div>
+              </Link>
             ))}
           </motion.div>
 

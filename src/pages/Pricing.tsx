@@ -224,24 +224,6 @@ export const Pricing: React.FC = () => {
         </div>
       </section>
 
-      {/* Pricing Intro */}
-      <section className="py-16 bg-white border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-texas-navy mb-6">Our Construction Estimating Plans</h2>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            Cost is the most important factor in estimation. It should be clear before the project starts.
-            Generally, smaller or simpler projects come with a straightforward, fixed fee.
-            For simple projects, the estimation fee averages around $200 per project.
-            This option is good for contractors who need estimates or only handle a few jobs.
-          </p>
-          <p className="text-gray-600 mb-6 leading-relaxed">
-            If you manage multiple projects every month, choose a monthly estimating package.
-            Because it is most cost-effective for you. Many estimating companies offer plans starting from about $1,500 per month.
-            These include a dedicated estimator and a set number of estimates.
-            This approach not only saves time but also brings consistency.
-          </p>
-        </div>
-      </section>
 
       {/* Pricing Packages */}
       <section className="py-16 bg-gray-50">
@@ -300,6 +282,26 @@ export const Pricing: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Pricing Intro */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-texas-navy mb-6">Our Construction Estimating Plans</h2>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Cost is the most important factor in estimation. It should be clear before the project starts.
+            Generally, smaller or simpler projects come with a straightforward, fixed fee.
+            For simple projects, the estimation fee averages around $200 per project.
+            This option is good for contractors who need estimates or only handle a few jobs.
+          </p>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            If you manage multiple projects every month, choose a monthly estimating package.
+            Because it is most cost-effective for you. Many estimating companies offer plans starting from about $1,500 per month.
+            These include a dedicated estimator and a set number of estimates.
+            This approach not only saves time but also brings consistency.
+          </p>
+        </div>
+      </section>
+
 
       {/* Factors Affecting Price */}
       <section className="py-16 bg-white">
