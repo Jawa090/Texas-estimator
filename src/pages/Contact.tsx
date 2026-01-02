@@ -143,23 +143,6 @@ export const Contact: React.FC = () => {
         </div>
       </section>
 
-      {/* Why Contact Us */}
-      <section className="py-12 bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-texas-navy mb-6">Why Contact ConstructionEstimatingTexas?</h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-6">
-              Our team delivers precise takeoffs, cost breakdowns, and bid-winning estimates using the latest software
-              for residential, commercial, and industrial projects across Texas. Expect fast turnaround times,
-              98% bid-win rates, and detailed reports covering materials, labor, and overhead to boost your profitability.
-            </p>
-            <p className="text-lg text-texas-accent font-medium">
-              Whether you're a busy contractor or subcontractor, we handle complex estimates so you focus on building.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form & Info */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -404,15 +387,16 @@ export const Contact: React.FC = () => {
                     <MapPin className="w-5 h-5 text-texas-accent mt-1" />
                     <div>
                       <p className="font-medium text-texas-navy">Address</p>
-                      <p className="text-gray-600">Houston, Texas</p>
+                      <p className="text-gray-600">12828 Willow Centre Dr Ste D
+Houston TX 77066</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-texas-accent" />
                     <div>
                       <p className="font-medium text-texas-navy">Phone</p>
-                      <a href="tel:7187196171" className="text-gray-600 hover:text-texas-accent">
-                        (718) 719-6171
+                      <a href="tel:+441234567890" className="text-gray-600 hover:text-texas-accent">
+                        +44 123 456 7890
                       </a>
                     </div>
                   </div>
@@ -420,20 +404,9 @@ export const Contact: React.FC = () => {
                     <Mail className="w-5 h-5 text-texas-accent" />
                     <div>
                       <p className="font-medium text-texas-navy">Email</p>
-                      <a href="mailto:info@constructionestimatingtexas.com" className="text-gray-600 hover:text-texas-accent">
-                        info@constructionestimatingtexas.com
+                      <a href="mailto:sales@constructionestimatingtexas.com" className="text-gray-600 hover:text-texas-accent">
+                        sales@constructionestimatingtexas.com
                       </a>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <Clock className="w-5 h-5 text-texas-accent mt-1" />
-                    <div>
-                      <p className="font-medium text-texas-navy">Business Hours</p>
-                      <p className="text-gray-600">
-                        Mon - Fri: 8:00 AM - 6:00 PM<br />
-                        Sat: 9:00 AM - 2:00 PM<br />
-                        Sun: Closed
-                      </p>
                     </div>
                   </div>
                 </div>
@@ -442,6 +415,25 @@ export const Contact: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Why Contact Us */}
+      <section className="py-12 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-texas-navy mb-6">Why Contact ConstructionEstimatingTexas?</h2>
+            <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              Our team delivers precise takeoffs, cost breakdowns, and bid-winning estimates using the latest software
+              for residential, commercial, and industrial projects across Texas. Expect fast turnaround times,
+              98% bid-win rates, and detailed reports covering materials, labor, and overhead to boost your profitability.
+            </p>
+            <p className="text-lg text-texas-accent font-medium">
+              Whether you're a busy contractor or subcontractor, we handle complex estimates so you focus on building.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
 
       {/* FAQ */}
       <section className="py-16 bg-white">
