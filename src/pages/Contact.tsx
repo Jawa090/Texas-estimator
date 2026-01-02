@@ -5,7 +5,6 @@ import {
   MapPin,
   Phone,
   Mail,
-  Clock,
   Upload,
   CheckCircle,
   AlertCircle,
