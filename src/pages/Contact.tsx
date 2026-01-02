@@ -395,8 +395,8 @@ Houston TX 77066</p>
                     <Phone className="w-5 h-5 text-texas-accent" />
                     <div>
                       <p className="font-medium text-texas-navy">Phone</p>
-                      <a href="tel:+441234567890" className="text-gray-600 hover:text-texas-accent">
-                        +44 123 456 7890
+                      <a href="tel:+17187196171" className="text-gray-600 hover:text-texas-accent">
+                        (718) 719-6171
                       </a>
                     </div>
                   </div>

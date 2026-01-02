@@ -54,8 +54,8 @@ export const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={16} className="text-texas-accent" />
-                <a href="tel:+441234567890" className="hover:text-texas-accent transition-colors">
-                  +44 123 456 7890
+                <a href="tel:+17187196171" className="hover:text-texas-accent transition-colors">
+                  (718) 719-6171
                 </a>
               </div>
               <div className="flex items-center space-x-3">
